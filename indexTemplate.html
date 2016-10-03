@@ -33,12 +33,7 @@
 
   <script type="text/javascript">
     $(function () {
-      var url = window.location.search.match(/url=([^&]+)/);
-      if (url && url.length > 1) {
-        url = decodeURIComponent(url[1]);
-      } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
-      }
+      
 
       hljs.configure({
         highlightSizeThreshold: 5000
@@ -48,9 +43,8 @@
       if(window.SwaggerTranslator) {
         window.SwaggerTranslator.translate();
       }
-      var spec1 = <% swaggerDoc %>
+      var url = <% swaggerDoc %>
       window.swaggerUi = new SwaggerUi({
-        spec: spec1,
         url: url,
         dom_id: "swagger-ui-container",
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
