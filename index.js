@@ -3,14 +3,16 @@
 const fs = require('fs');
 const express = require('express');
 
-const setup = swaggerDoc => {
+const setup = (swaggerDoc,themeName) => {
 	const html = fs.readFileSync(__dirname + '/indexTemplate.html');
     try {
     	fs.unlinkSync(__dirname + '/index.html');
     } catch (e) {
 
     }
-    const indexHTML = html.toString().replace('<% swaggerDoc %>', JSON.stringify(swaggerDoc));
+    const indexHTML = html.toString()
+    				.replace('<% swaggerDoc %>', JSON.stringify(swaggerDoc))
+    				.replace('<% themeName %>', JSON.stringify(themeName));
     return (req, res) => res.send(indexHTML);
 }
 
