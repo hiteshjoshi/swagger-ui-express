@@ -11,7 +11,7 @@ const setup = (swaggerDoc,themeName) => {
 
     }
     const indexHTML = html.toString()
-    				.replace('<% swaggerDoc %>', swaggerDoc)
+    				.replace('<% swaggerDoc %>', JSON.stringify(swaggerDoc))
     				.replace('<% themeName %>', themeName)
     return (req, res) => res.send(indexHTML);
 }
